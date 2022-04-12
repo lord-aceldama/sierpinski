@@ -26,6 +26,10 @@ while True:
                 points.append(mouse)
                 pygame.draw.circle(point_surface, pygame.Color('blue'), mouse, 1, width=1)
 
+    text_surface = myfont.render(f'points: {len(points)}', False, (255, 255, 255))
+    screen.blit(point_surface, (0, 0))
+    screen.blit(text_surface, (5, 5))
+    
     if len(points) < 3:
         pygame.draw.circle(screen, pygame.Color('green'), mouse, 0.5, width=1)
         if len(points) == 2:
@@ -41,9 +45,5 @@ while True:
         points.append(new_point)
         pygame.draw.circle(point_surface, pygame.Color('blue'), new_point, 1, width=1)
 
-    text_surface = myfont.render(f'points: {len(points)}', False, (255, 255, 255))
-
-    screen.blit(point_surface, (0, 0))
-    screen.blit(text_surface, (5, 5))
     pygame.display.update()
     clock.tick(60)
